@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://clwa5r46nrhrk"]
+
+[node name="World" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 459.0
+offset_top = 280.0
+offset_right = 636.0
+offset_bottom = 329.0
+text = "this is the future world
+"
