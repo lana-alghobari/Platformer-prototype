@@ -6,3 +6,58 @@
 *.import
 *.translation
 *.tmp
+# ========================
+# Godot generated files
+# ========================
+.import/
+.export/
+*.import
+
+# ========================
+# OS junk
+# ========================
+.DS_Store
+__MACOSX/
+._*
+
+# ========================
+# Editor / temp files
+# ========================
+*.tmp
+*.translation
+*.uid
+
+# ========================
+# Optional (logs)
+# ========================
+*.log
+# Godot generated
+.import/
+.export/
+*.import
+*.uid
+
+# OS junk
+.DS_Store
+__MACOSX/
+._*
+
+# Editor / IDE
+.idea/
+.vscode/
+
+# Source art (do NOT version raw packs)
+*.psd
+*.ase
+*.aseprite
+
+# Previews / unused junk
+*Preview*
+*preview*
+*.gif
+
+# Asset packs (keep only what you use)
+Sunny Land Collection Files/
+SunnyLand Music/
+Music by Pascal Belisle/
+sunny-land-phaser-project/
