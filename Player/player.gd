@@ -30,5 +30,5 @@ func _physics_process(delta: float) -> void:
 		if velocity.y == 0 :
 			anim.play("Idle")
 	if velocity.y >0 :
-		anim.play("Fall")
+		anim.play("Jump")
 	move_and_slide()
