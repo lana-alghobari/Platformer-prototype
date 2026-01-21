@@ -9,7 +9,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -20,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		if direction ==1 :
 			get_node("AnimatedSprite2D").flip_h = false
-		if direction == -1:
+		elif direction == -1:
 			get_node("AnimatedSprite2D").flip_h = true
 		velocity.x = direction * SPEED
 		if velocity.y == 0 :

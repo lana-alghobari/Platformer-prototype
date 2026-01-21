@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc5880a0cfhfl"]
+[gd_scene load_steps=5 format=3 uid="uid://cc5880a0cfhfl"]
 
 [ext_resource type="Script" uid="uid://xq1xvsudd0v1" path="res://BackGround/back_ground.gd" id="1_17apx"]
 [ext_resource type="Texture2D" uid="uid://8b8vl5b64xva" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Environments/Forest of Illusion/Forest of Illusion Expansion Pack/Layers/back.png" id="2_0ki2g"]
 [ext_resource type="Texture2D" uid="uid://78drkp14ijgk" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Environments/Forest of Illusion/Forest of Illusion Expansion Pack/Layers/middle.png" id="3_42ly4"]
 [ext_resource type="Texture2D" uid="uid://b0a0o7gx10gle" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Environments/Forest of Illusion/Forest of Illusion Expansion Pack/Layers/front.png" id="4_2hfhg"]
-[ext_resource type="Texture2D" uid="uid://6gxf1c2rkdwu" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Environments/Forest of Illusion/Forest of Illusion Expansion Pack/Layers/tiles.png" id="5_83gn2"]
 
 [node name="BackGround" type="ParallaxBackground"]
 script = ExtResource("1_17apx")
@@ -21,32 +20,15 @@ texture = ExtResource("2_0ki2g")
 motion_mirroring = Vector2(1220, 0)
 
 [node name="Middle" type="Sprite2D" parent="ParallaxLayer2"]
-position = Vector2(585.99994, 329)
-scale = Vector2(2.1614587, 2.4430149)
+position = Vector2(576.2499, 333.00003)
+scale = Vector2(2.1310766, 2.4430149)
 texture = ExtResource("3_42ly4")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 0.7)
 motion_mirroring = Vector2(1275, 0)
 
 [node name="Front" type="Sprite2D" parent="ParallaxLayer3"]
-position = Vector2(608, 328.00003)
-scale = Vector2(2.2725697, 2.426011)
+position = Vector2(592.74994, 328.00003)
+scale = Vector2(2.219618, 2.426011)
 texture = ExtResource("4_2hfhg")
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(1632, 0)
-
-[node name="Tiles2" type="Sprite2D" parent="ParallaxLayer4"]
-position = Vector2(808.00006, 427.99997)
-scale = Vector2(0.9739583, 0.9283087)
-texture = ExtResource("5_83gn2")
-
-[node name="Tiles3" type="Sprite2D" parent="ParallaxLayer4"]
-position = Vector2(1347, 428)
-scale = Vector2(0.9739583, 0.9283087)
-texture = ExtResource("5_83gn2")
-
-[node name="Tiles" type="Sprite2D" parent="ParallaxLayer4"]
-position = Vector2(266, 425.00003)
-scale = Vector2(0.9027778, 0.9007353)
-texture = ExtResource("5_83gn2")
