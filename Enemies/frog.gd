@@ -10,6 +10,8 @@ var dead = false
 
 func _physics_process(delta: float) -> void:
 	if dead :
+		velocity.x =0
+		velocity.y = 0
 		return
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -39,6 +41,7 @@ func _on_player_detection_body_exited(body: Node2D) -> void:
 
 func _on_character_death_body_entered(body: Node2D) -> void:
 	if body.name == "Player" :
+		dead = true
 		print("froggy dead")
 		anim.play("Death")
 		await anim.animation_finished 
