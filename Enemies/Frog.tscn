@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqp5metupxjh1"]
+[gd_scene load_steps=20 format=3 uid="uid://cqp5metupxjh1"]
 
 [ext_resource type="Script" uid="uid://b8jorcspliye2" path="res://Enemies/frog.gd" id="1_bl3hx"]
 [ext_resource type="Texture2D" uid="uid://cra27odxlrje5" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Enemies and NPC/frog/Spritesheets/frog-idle.png" id="1_bxkaj"]
@@ -67,7 +67,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_64xo1")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -119,7 +119,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hems"]
-radius = 154.08115
+radius = 84.00595
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bl3hx"]
+size = Vector2(19, 17)
 
 [node name="Frog" type="CharacterBody2D"]
 script = ExtResource("1_bl3hx")
@@ -132,13 +135,20 @@ shape = SubResource("RectangleShape2D_tdkji")
 position = Vector2(1, -11)
 sprite_frames = SubResource("SpriteFrames_t8uwx")
 animation = &"Idle"
-metadata/_edit_lock_ = true
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+visible = false
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_0hems")
 
+[node name="characterDeath" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="characterDeath"]
+position = Vector2(0.5, -9.5)
+shape = SubResource("RectangleShape2D_bl3hx")
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="characterDeath" to="." method="_on_character_death_body_entered"]

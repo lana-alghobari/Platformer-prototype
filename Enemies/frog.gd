@@ -1,33 +1,30 @@
 extends CharacterBody2D
 
-@onready var anim = $AnimatedSprite2D
+@onready var anim = get_node("AnimatedSprite2D")
 @onready var player = get_node("../Player")
 
-var speed = 100
-var jump_velocity = -150
+var speed = 75
+var jump_velocity = -300
 var chase = false
-var has_jumped = false
+var dead = false
 
 func _physics_process(delta: float) -> void:
-	# ALWAYS apply gravity
-	velocity += get_gravity() * delta
-
+	if dead :
+		return
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	if chase:
 		var direction = (player.position - position).normalized()
-
 		anim.flip_h = direction.x > 0
 		velocity.x = speed * direction.x
 
-		if is_on_floor() and not has_jumped:
-			velocity.y = jump_velocity
-			has_jumped = true
+		if is_on_floor():
 			anim.play("Jump")
+			velocity.y = jump_velocity
+		
 	else:
-		velocity.x = 0
 		anim.play("Idle")
-
-	if is_on_floor():
-		has_jumped = false
+		velocity.x = 0
 
 	move_and_slide()
 
@@ -38,3 +35,11 @@ func _on_player_detection_body_entered(body: Node2D) -> void:
 func _on_player_detection_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		chase = false
+
+
+func _on_character_death_body_entered(body: Node2D) -> void:
+	if body.name == "Player" :
+		print("froggy dead")
+		anim.play("Death")
+		await anim.animation_finished 
+		self.queue_free()
