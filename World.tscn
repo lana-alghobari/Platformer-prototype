@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://clwa5r46nrhrk"]
+[gd_scene load_steps=10 format=4 uid="uid://clwa5r46nrhrk"]
 
 [ext_resource type="PackedScene" uid="uid://bwum75wb70s6b" path="res://Player/player.tscn" id="1_c6gwx"]
 [ext_resource type="Texture2D" uid="uid://cuy5g0m5shun8" path="res://sunny-land-phaser-project/sunny-land/assets/environment/tileset.png" id="2_bcbcq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://8b8vl5b64xva" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Environments/Forest of Illusion/Forest of Illusion Expansion Pack/Layers/back.png" id="3_p1v5b"]
 [ext_resource type="Texture2D" uid="uid://78drkp14ijgk" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Environments/Forest of Illusion/Forest of Illusion Expansion Pack/Layers/middle.png" id="4_wygdx"]
 [ext_resource type="PackedScene" uid="uid://cqp5metupxjh1" path="res://Enemies/Frog.tscn" id="6_p1v5b"]
+[ext_resource type="Script" uid="uid://dbhrjwfs0rtln" path="res://label.gd" id="7_wygdx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bah7m"]
 texture = ExtResource("2_bcbcq")
@@ -177,3 +178,20 @@ tile_set = SubResource("TileSet_fv4w7")
 
 [node name="Frog" parent="." instance=ExtResource("6_p1v5b")]
 position = Vector2(913, 388)
+
+[node name="Frog2" parent="." instance=ExtResource("6_p1v5b")]
+position = Vector2(226, 331)
+
+[node name="Frog3" parent="." instance=ExtResource("6_p1v5b")]
+position = Vector2(1317, 277)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 21.0
+offset_top = 1.0
+offset_right = 153.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 20
+text = "Hp"
+script = ExtResource("7_wygdx")

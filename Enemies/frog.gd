@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 		var direction = (player.position - position).normalized()
 		anim.flip_h = direction.x > 0
 		velocity.x = speed * direction.x
-
 		if is_on_floor():
 			anim.play("Jump")
 			velocity.y = jump_velocity
@@ -46,3 +45,8 @@ func _on_character_death_body_entered(body: Node2D) -> void:
 		anim.play("Death")
 		await anim.animation_finished 
 		self.queue_free()
+
+
+func _on_damage_body_entered(body: Node2D) -> void:
+	if body.name == "Player":  
+		body.health -= 10  
