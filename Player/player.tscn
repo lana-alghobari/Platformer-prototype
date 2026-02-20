@@ -1,8 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://bwum75wb70s6b"]
+[gd_scene load_steps=38 format=3 uid="uid://bwum75wb70s6b"]
 
 [ext_resource type="Script" uid="uid://c36rhvlgywii4" path="res://Player/player.gd" id="1_hshwv"]
 [ext_resource type="Texture2D" uid="uid://b6ahqbqqmkufy" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Squirrel/crouch/spritesheet.png" id="2_gpjlu"]
 [ext_resource type="Texture2D" uid="uid://caelg8vi6wvi6" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Squirrel/hurt/Frames/player-hurt-1.png" id="3_8mwp6"]
+[ext_resource type="Texture2D" uid="uid://c0agpjwk8onnr" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/enemy-death 2/spritesheet.png" id="3_gpjlu"]
 [ext_resource type="Texture2D" uid="uid://brbstjg4o0oo1" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Squirrel/hurt/Frames/player-hurt-2.png" id="4_qemgg"]
 [ext_resource type="Texture2D" uid="uid://dp6ye2i5hcupx" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Squirrel/idle/Sprites/player-idle-1.png" id="5_8viyr"]
 [ext_resource type="Texture2D" uid="uid://cg77ousimyci8" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Squirrel/idle/Sprites/player-idle-2.png" id="6_sm0op"]
@@ -35,6 +36,22 @@ region = Rect2(0, 0, 90, 58)
 atlas = ExtResource("2_gpjlu")
 region = Rect2(90, 0, 90, 58)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mwp6"]
+atlas = ExtResource("3_gpjlu")
+region = Rect2(0, 0, 28, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qemgg"]
+atlas = ExtResource("3_gpjlu")
+region = Rect2(28, 0, 28, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8viyr"]
+atlas = ExtResource("3_gpjlu")
+region = Rect2(56, 0, 28, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm0op"]
+atlas = ExtResource("3_gpjlu")
+region = Rect2(84, 0, 28, 26)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_6rl0i"]
 animations = [{
 "frames": [{
@@ -46,6 +63,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"Crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mwp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qemgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8viyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm0op")
+}],
+"loop": true,
+"name": &"Death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -230,8 +264,36 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_76lrf"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.2010468, 0.31015146),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8mwp6"]
 _data = {
+&"Death": SubResource("Animation_76lrf"),
 &"Idle": SubResource("Animation_hshwv"),
 &"Jump": SubResource("Animation_8mwp6"),
 &"RESET": SubResource("Animation_gpjlu"),
@@ -249,7 +311,7 @@ shape = SubResource("CapsuleShape2D_dy65m")
 position = Vector2(-1, -4)
 scale = Vector2(0.9444444, 1)
 sprite_frames = SubResource("SpriteFrames_6rl0i")
-animation = &"Idle"
+animation = &"Death"
 frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]

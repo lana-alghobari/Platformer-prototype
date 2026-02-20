@@ -30,4 +30,6 @@ func _physics_process(delta: float) -> void:
 			anim.play("Idle")
 	if velocity.y >0 :
 		anim.play("Jump")
+	if health <= 0:
+		anim.play("Death")
 	move_and_slide()
