@@ -7,17 +7,18 @@
 script = ExtResource("1_ig7tw")
 
 [node name="Play" type="MenuButton" parent="."]
-offset_left = 350.0
-offset_top = 68.0
-offset_right = 790.0
-offset_bottom = 298.0
+offset_left = 371.0
+offset_top = 82.0
+offset_right = 771.0
+offset_bottom = 287.0
+rotation = 0.003995126
 text = "Play"
 
 [node name="quit" type="MenuButton" parent="."]
-offset_left = 350.0
-offset_top = 335.0
-offset_right = 790.0
-offset_bottom = 565.0
+offset_left = 324.0
+offset_top = 353.0
+offset_right = 764.0
+offset_bottom = 583.0
 text = "Quit"
 
 [node name="BackGround" parent="." instance=ExtResource("2_0xm2m")]
