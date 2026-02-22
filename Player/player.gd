@@ -9,6 +9,9 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	if (health<=0):
+		anim.play("Death");
+		await anim.animation_finished
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -30,6 +33,4 @@ func _physics_process(delta: float) -> void:
 			anim.play("Idle")
 	if velocity.y >0 :
 		anim.play("Jump")
-	if health <= 0:
-		anim.play("Death")
 	move_and_slide()
