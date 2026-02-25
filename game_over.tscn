@@ -1,16 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc01jspswy1un"]
+[gd_scene load_steps=3 format=3 uid="uid://cc01jspswy1un"]
 
 [ext_resource type="PackedScene" uid="uid://cc5880a0cfhfl" path="res://BackGround/back_ground.tscn" id="1_y26ei"]
+[ext_resource type="Script" uid="uid://b2wxrmcqw6oj" path="res://game_over.gd" id="1_yxx3c"]
 
 [node name="GameOver" type="Node2D"]
+script = ExtResource("1_yxx3c")
 
 [node name="BackGround" parent="." instance=ExtResource("1_y26ei")]
 
 [node name="Label" type="Label" parent="."]
-offset_left = 292.0
-offset_top = 263.0
-offset_right = 803.0
-offset_bottom = 368.0
+offset_left = 299.0
+offset_top = 158.0
+offset_right = 810.0
+offset_bottom = 263.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
@@ -18,3 +20,22 @@ theme_override_font_sizes/font_size = 40
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="revive" type="Button" parent="."]
+offset_left = 482.0
+offset_top = 320.0
+offset_right = 641.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(0.5715316, 0.99999994, 0.41605836, 1)
+text = "Revive?"
+
+[node name="quit" type="Button" parent="."]
+offset_left = 480.0
+offset_top = 412.0
+offset_right = 641.0
+offset_bottom = 450.0
+text = "Quit
+"
+
+[connection signal="pressed" from="revive" to="." method="_on_revive_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
