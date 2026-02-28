@@ -14,9 +14,12 @@ offset_top = 158.0
 offset_right = 810.0
 offset_bottom = 263.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 1
-theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -27,15 +30,24 @@ offset_top = 320.0
 offset_right = 641.0
 offset_bottom = 360.0
 theme_override_colors/font_color = Color(0.5715316, 0.99999994, 0.41605836, 1)
-text = "Revive?"
+text = "Revive"
 
 [node name="quit" type="Button" parent="."]
-offset_left = 480.0
-offset_top = 412.0
-offset_right = 641.0
-offset_bottom = 450.0
+offset_left = 478.0
+offset_top = 477.0
+offset_right = 639.0
+offset_bottom = 515.0
 text = "Quit
+"
+
+[node name="mainmenu" type="Button" parent="."]
+offset_left = 481.0
+offset_top = 394.0
+offset_right = 641.0
+offset_bottom = 430.0
+text = "Main Menu
 "
 
 [connection signal="pressed" from="revive" to="." method="_on_revive_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="mainmenu" to="." method="_on_mainmenu_pressed"]

@@ -7,21 +7,36 @@
 script = ExtResource("1_ig7tw")
 
 [node name="Play" type="MenuButton" parent="."]
-offset_left = 371.0
-offset_top = 82.0
-offset_right = 771.0
-offset_bottom = 287.0
+offset_left = 342.0
+offset_top = 282.0
+offset_right = 742.0
+offset_bottom = 424.1939
 rotation = 0.003995126
 text = "Play"
 
 [node name="quit" type="MenuButton" parent="."]
-offset_left = 324.0
-offset_top = 353.0
-offset_right = 764.0
-offset_bottom = 583.0
+offset_left = 323.0
+offset_top = 426.0
+offset_right = 763.0
+offset_bottom = 554.0
 text = "Quit"
 
 [node name="BackGround" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="Squeeky" type="Label" parent="."]
+offset_left = 297.0
+offset_top = 78.0
+offset_right = 813.0
+offset_bottom = 246.0
+theme_override_colors/font_color = Color(0.80682343, 0.76573837, 0.44987363, 0.9843137)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 61
+text = "S  Q  U  E  E  K  Y"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
