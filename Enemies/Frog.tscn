@@ -125,12 +125,13 @@ radius = 84.00595
 size = Vector2(24, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77d3p"]
-size = Vector2(26, 17)
+size = Vector2(28, 19.25)
 
 [node name="Frog" type="CharacterBody2D"]
 script = ExtResource("1_bl3hx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_tdkji")
 
@@ -140,9 +141,9 @@ sprite_frames = SubResource("SpriteFrames_t8uwx")
 animation = &"Idle"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-visible = false
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_0hems")
 
@@ -155,7 +156,7 @@ shape = SubResource("RectangleShape2D_bl3hx")
 [node name="damage" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
-position = Vector2(0, -9)
+position = Vector2(0, -8.625)
 shape = SubResource("RectangleShape2D_77d3p")
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
