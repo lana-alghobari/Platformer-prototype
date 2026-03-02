@@ -131,7 +131,6 @@ size = Vector2(28, 19.25)
 script = ExtResource("1_bl3hx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_tdkji")
 
@@ -141,7 +140,6 @@ sprite_frames = SubResource("SpriteFrames_t8uwx")
 animation = &"Idle"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(0, -10)

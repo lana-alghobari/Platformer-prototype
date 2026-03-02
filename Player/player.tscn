@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bwum75wb70s6b"]
+[gd_scene load_steps=40 format=3 uid="uid://bwum75wb70s6b"]
 
 [ext_resource type="Script" uid="uid://c36rhvlgywii4" path="res://Player/player.gd" id="1_hshwv"]
 [ext_resource type="Texture2D" uid="uid://b6ahqbqqmkufy" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Squirrel/crouch/spritesheet.png" id="2_gpjlu"]
@@ -28,14 +28,6 @@
 radius = 13.0
 height = 26.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_maysp"]
-atlas = ExtResource("2_gpjlu")
-region = Rect2(0, 0, 90, 58)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1l10g"]
-atlas = ExtResource("2_gpjlu")
-region = Rect2(90, 0, 90, 58)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mwp6"]
 atlas = ExtResource("3_gpjlu")
 region = Rect2(0, 0, 28, 26)
@@ -52,19 +44,16 @@ region = Rect2(56, 0, 28, 26)
 atlas = ExtResource("3_gpjlu")
 region = Rect2(84, 0, 28, 26)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_maysp"]
+atlas = ExtResource("2_gpjlu")
+region = Rect2(0, 0, 90, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l10g"]
+atlas = ExtResource("2_gpjlu")
+region = Rect2(90, 0, 90, 58)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_6rl0i"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_maysp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1l10g")
-}],
-"loop": true,
-"name": &"Crouch",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8mwp6")
@@ -161,6 +150,17 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maysp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l10g")
+}],
+"loop": true,
+"name": &"Shoot",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_76lrf"]
@@ -188,6 +188,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_qemgg"]
+resource_name = "Hurt"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Hurt"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_hshwv"]
@@ -303,8 +331,10 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_qemgg"]
-resource_name = "Hurt"
+[sub_resource type="Animation" id="Animation_sm0op"]
+resource_name = "Shoot"
+length = 0.3
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -315,7 +345,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Hurt"]
+"values": [&"Shoot"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -324,7 +354,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
+"times": PackedFloat32Array(0, 0.13333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
@@ -337,7 +367,8 @@ _data = {
 &"Idle": SubResource("Animation_hshwv"),
 &"Jump": SubResource("Animation_8mwp6"),
 &"RESET": SubResource("Animation_gpjlu"),
-&"Run": SubResource("Animation_8viyr")
+&"Run": SubResource("Animation_8viyr"),
+&"Shoot": SubResource("Animation_sm0op")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -352,7 +383,6 @@ position = Vector2(-1, -4)
 scale = Vector2(0.9444444, 1)
 sprite_frames = SubResource("SpriteFrames_6rl0i")
 animation = &"Hurt"
-frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.5, 3.5)

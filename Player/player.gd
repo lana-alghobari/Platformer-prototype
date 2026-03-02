@@ -19,6 +19,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		animation.play("Jump")
 	var direction := Input.get_axis("ui_left", "ui_right")
+	if Input.is_action_pressed("ui_up"):
+		animation.play("Shoot")
+		await animation.animation_finished
 	if direction:
 		if direction ==1 :
 			get_node("AnimatedSprite2D").flip_h = false
