@@ -1,16 +1,53 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbpii4yj5hb"]
+[gd_scene load_steps=20 format=3 uid="uid://bbpii4yj5hb"]
 
 [ext_resource type="Texture2D" uid="uid://cogjtt3vjfsut" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/acorn/Sprites/acorn-1.png" id="1_3yopb"]
 [ext_resource type="Script" uid="uid://cx7a3wt1cflxw" path="res://acron.gd" id="1_yj4r8"]
+[ext_resource type="Texture2D" uid="uid://duuhqn6ljtmxj" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/acorn/Sprites/pop/spritesheet.png" id="2_7d7c3"]
 [ext_resource type="Texture2D" uid="uid://b5go1mc1sx3xq" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/acorn/Sprites/acorn-2.png" id="2_yj4r8"]
 [ext_resource type="Texture2D" uid="uid://8g4q6nbnae4y" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/acorn/Sprites/acorn-3.png" id="3_di6a5"]
+[ext_resource type="Texture2D" uid="uid://dpyj6v80avmwg" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/acorn/Sprites/shot/acorn-1.png" id="5_edi1c"]
+[ext_resource type="Texture2D" uid="uid://cexvih2uhx1ij" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/acorn/Sprites/shot/acorn-2.png" id="6_7d7c3"]
+[ext_resource type="Texture2D" uid="uid://dsp7oty5xibdh" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/acorn/Sprites/shot/acorn-3.png" id="7_nhure"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vtvne"]
 radius = 9.0
 height = 18.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhure"]
+atlas = ExtResource("2_7d7c3")
+region = Rect2(0, 0, 25, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q2rt"]
+atlas = ExtResource("2_7d7c3")
+region = Rect2(25, 0, 25, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xy28"]
+atlas = ExtResource("2_7d7c3")
+region = Rect2(50, 0, 25, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4p3c"]
+atlas = ExtResource("2_7d7c3")
+region = Rect2(75, 0, 25, 23)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_edi1c"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhure")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q2rt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xy28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4p3c")
+}],
+"loop": true,
+"name": &"Collision",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_3yopb")
@@ -23,6 +60,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_edi1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7d7c3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nhure")
+}],
+"loop": true,
+"name": &"Shot",
 "speed": 5.0
 }]
 
@@ -80,10 +131,67 @@ tracks/1/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_edi1c"]
+resource_name = "Shot"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Shot"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_rhjkj"]
+resource_name = "Collision"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Collision"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.17675164, 0.3535033, 0.5349063),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6q2rt"]
 _data = {
+&"Collision": SubResource("Animation_rhjkj"),
 &"Idle": SubResource("Animation_7d7c3"),
-&"RESET": SubResource("Animation_nhure")
+&"RESET": SubResource("Animation_nhure"),
+&"Shot": SubResource("Animation_edi1c")
 }
 
 [node name="Acron" type="CharacterBody2D"]

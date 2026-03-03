@@ -39,12 +39,17 @@ func _on_player_detection_body_exited(body: Node2D) -> void:
 
 
 func _on_character_death_body_entered(body: Node2D) -> void:
-	if body.name == "Player" :
+	if body.name == "Player":
 		dead = true
 		print("froggy dead")
 		anim.play("Death")
 		await anim.animation_finished 
 		self.queue_free()
+	if body.name == "Acron":
+		dead = true 
+		anim.play("Death")
+		body.pop() 
+		await anim.animation_finished
 
 
 func _on_damage_body_entered(body: Node2D) -> void:
