@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		animation.play("Jump")
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up") and is_on_floor():
 		animation.play("Shoot")
 		await animation.animation_finished
 	if direction:

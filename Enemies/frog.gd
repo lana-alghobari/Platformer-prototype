@@ -3,8 +3,8 @@ extends CharacterBody2D
 @onready var anim = get_node("AnimatedSprite2D")
 @onready var player = get_node("../Player")
 
-var speed = 75
-var jump_velocity = -300
+var speed = 100
+var jump_velocity = -250
 var chase = false
 var dead = false
 
@@ -17,10 +17,10 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	if chase:
 		var direction = (player.position - position).normalized()
-		anim.flip_h = direction.x > 0
+		anim.flip_h = direction.x > 0 
 		velocity.x = speed * direction.x
-		if is_on_floor():
-			anim.play("Jump")
+		if is_on_floor(): 
+			anim.play("Jump") 
 			velocity.y = jump_velocity
 		
 	else:
