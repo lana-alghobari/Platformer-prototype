@@ -41,7 +41,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h4p3c")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -62,8 +62,7 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_6q2rt"]
 resource_name = "Death"
-length = 0.8
-loop_mode = 2
+length = 0.75
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

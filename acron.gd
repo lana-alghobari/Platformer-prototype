@@ -10,9 +10,7 @@ var isCollected = false
 
 func _physics_process(delta: float) -> void:
 	if isCollected == true:
-		anim.play("Death")
-		await anim.animation_finished
-		self.queue_free()
+		return
 	if velocity.y == 0:
 		anim.play("Idle")
 	move_and_slide()
@@ -27,7 +25,10 @@ func _physics_process(delta: float) -> void:
 	#await anim.animation_finished
 	
 func _on_collectable_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and isCollected == false:
 		isCollected = true
+		anim.play("Death")
+		await anim.animation_finished
 		player.acronsNum+=1 
 		print(player.acronsNum)
+		queue_free()
