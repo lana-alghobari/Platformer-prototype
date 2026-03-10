@@ -48,7 +48,6 @@ func _on_character_death_body_entered(body: Node2D) -> void:
 	if body.name == "Acron":
 		dead = true 
 		anim.play("Death")
-		body.pop() 
 		await anim.animation_finished
 
 
