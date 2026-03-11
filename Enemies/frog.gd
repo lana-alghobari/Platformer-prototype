@@ -42,6 +42,7 @@ func _on_character_death_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		dead = true
 		print("froggy dead")
+		$CollisionShape2D.set_deferred("disabled" ,true)
 		anim.play("Death")
 		await anim.animation_finished 
 		self.queue_free()
