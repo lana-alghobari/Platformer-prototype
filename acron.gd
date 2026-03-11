@@ -26,9 +26,10 @@ func _physics_process(delta: float) -> void:
 	
 func _on_collectable_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and isCollected == false:
+		$CollisionShape2D.set_deferred("disabled" , true)
 		isCollected = true
-		anim.play("Death")
-		await anim.animation_finished
 		player.acronsNum+=1 
 		print(player.acronsNum)
+		anim.play("Death")
+		await anim.animation_finished
 		queue_free()
