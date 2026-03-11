@@ -29,6 +29,8 @@ func _on_collectable_body_entered(body: Node2D) -> void:
 		$CollisionShape2D.set_deferred("disabled" , true)
 		isCollected = true
 		player.acronsNum+=1 
+		if(player.health<100):
+			player.health+=10
 		print(player.acronsNum)
 		anim.play("Death")
 		await anim.animation_finished
