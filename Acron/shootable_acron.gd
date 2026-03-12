@@ -22,8 +22,10 @@ func on_player_shot(direction ,pos):
 	shoot(direction,pos)
 	
 func shoot (direction ,pos):
-	dir = direction
+	#dir = direction
 	velocity.x = speed*direction
-	global_position = pos
+	if direction==-1 :
+		$AnimatedSprite2D.flip_h = true	
+	#global_position = pos
 	anim.play("Shot")
 	await anim.animation_finished

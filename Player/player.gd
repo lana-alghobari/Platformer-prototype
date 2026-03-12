@@ -26,7 +26,12 @@ func _physics_process(delta: float) -> void:
 		animation.play("Shoot")
 		var acron = acron_scene.instantiate()
 		get_parent().add_child(acron)
-		emit_signal("player_shot" , direction ,global_position )
+		acron.global_position = global_position
+		var dir =1 
+		if $AnimatedSprite2D.flip_h ==true:
+			dir = -1
+		acron.dir = dir
+		emit_signal("player_shot" , dir ,global_position )
 		await animation.animation_finished
 		
 	if direction:
