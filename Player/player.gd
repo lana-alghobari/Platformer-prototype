@@ -6,7 +6,6 @@ var acronsNum = 0
 @export var acron_scene :PackedScene
 
 @onready var animation = get_node("AnimationPlayer")
-signal player_shot(direction ,pos)
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -26,12 +25,11 @@ func _physics_process(delta: float) -> void:
 		animation.play("Shoot")
 		var acron = acron_scene.instantiate()
 		get_parent().add_child(acron)
-		acron.global_position = global_position
 		var dir =1 
 		if $AnimatedSprite2D.flip_h ==true:
 			dir = -1
 		acron.dir = dir
-		emit_signal("player_shot" , dir ,global_position )
+		acron.global_position = global_position +Vector2(20*dir,0)
 		await animation.animation_finished
 		
 	if direction:
