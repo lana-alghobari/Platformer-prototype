@@ -3,10 +3,10 @@ var health = 100
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var acronsNum = 0
-@onready var pos = self.get_position_delta()
+@export var acron_scene :PackedScene
 
 @onready var animation = get_node("AnimationPlayer")
-#signal player_shot(direction ,pos)
+signal player_shot(direction ,pos)
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -22,10 +22,13 @@ func _physics_process(delta: float) -> void:
 		animation.play("Jump")
 		
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if Input.is_action_pressed("ui_up") and is_on_floor():
+	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		animation.play("Shoot")
-		#emit_signal("player_shot" , 1 , pos)
-		#await animation.animation_finished
+		var acron = acron_scene.instantiate()
+		get_parent().add_child(acron)
+		emit_signal("player_shot" , direction ,global_position )
+		await animation.animation_finished
+		
 	if direction:
 		if direction ==1 :
 			get_node("AnimatedSprite2D").flip_h = false

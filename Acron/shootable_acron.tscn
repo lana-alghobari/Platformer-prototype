@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://v7ifpem3xrlt"]
+[gd_scene load_steps=16 format=3 uid="uid://v7ifpem3xrlt"]
 
+[ext_resource type="Script" uid="uid://d0q5iyfpdfrcp" path="res://Acron/shootable_acron.gd" id="1_jmvvj"]
 [ext_resource type="Texture2D" uid="uid://cmr2lf6vl7pky" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/enemy-death 2/Sprites/enemy-death-1.png" id="1_u6co4"]
 [ext_resource type="Texture2D" uid="uid://dpyj6v80avmwg" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/acorn/Sprites/shot/acorn-1.png" id="1_xells"]
 [ext_resource type="Texture2D" uid="uid://cexvih2uhx1ij" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/acorn/Sprites/shot/acorn-2.png" id="2_6d1gj"]
@@ -72,33 +73,6 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_e8oro"]
-resource_name = "shot"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"shot"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.20698549, 0.41629666),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
 [sub_resource type="Animation" id="Animation_supo5"]
 resource_name = "pop"
 tracks/0/type = "value"
@@ -126,6 +100,35 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_e8oro"]
+resource_name = "shot"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"shot"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20698549, 0.41629666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x7s6o"]
 _data = {
 &"RESET": SubResource("Animation_jmvvj"),
@@ -134,9 +137,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1l747"]
-radius = 15.0
+radius = 19.0
 
 [node name="shootableAcron" type="CharacterBody2D"]
+script = ExtResource("1_jmvvj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ag5es")
