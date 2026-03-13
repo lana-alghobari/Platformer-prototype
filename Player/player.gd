@@ -22,15 +22,17 @@ func _physics_process(delta: float) -> void:
 		
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_just_pressed("ui_up") and is_on_floor():
-		animation.play("Shoot")
-		var acron = acron_scene.instantiate()
-		get_parent().add_child(acron)
-		var dir =1 
-		if $AnimatedSprite2D.flip_h ==true:
-			dir = -1
-		acron.dir = dir
-		acron.global_position = global_position +Vector2(20*dir,0)
-		await animation.animation_finished
+		if acronsNum> 0:
+			animation.play("Shoot")
+			acronsNum-=1
+			var acron = acron_scene.instantiate()
+			get_parent().add_child(acron)
+			var dir =1 
+			if $AnimatedSprite2D.flip_h ==true:
+				dir = -1
+			acron.dir = dir
+			acron.global_position = global_position +Vector2(20*dir,0)
+			await animation.animation_finished
 		
 	if direction:
 		if direction ==1 :
