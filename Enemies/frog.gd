@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var anim = get_node("AnimatedSprite2D")
 @onready var player = get_node("../Player")
+@onready var acron = get_node("../Acron/shootableAcron")
 
 var speed = 100
 var jump_velocity = -250
@@ -46,12 +47,18 @@ func _on_character_death_body_entered(body: Node2D) -> void:
 		anim.play("Death")
 		await anim.animation_finished 
 		self.queue_free()
-	if body.name == "Acron":
-		dead = true 
-		anim.play("Death")
-		await anim.animation_finished
 
 
 func _on_damage_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		body.take_damage()
+
+
+func _on_acron_danage_body_entered(body: Node2D) -> void:
+		if body.name == "shootableAcron":
+			dead = true 
+			anim.play("Death")
+			await anim.animation_finished
+			print("froggy dead")
+			queue_free()
+			

@@ -1,14 +1,15 @@
 extends CharacterBody2D
-var speed = 150
+var speed = 275
 @onready var anim = get_node("AnimationPlayer")
 @onready var player = get_node("../Player")
 var dir =1
 var isPopped = false
 
 func _ready() -> void:
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(1).timeout
 	isPopped = true
 	anim.play("pop")
+	$CollisionShape2D.set_deferred("disabled" , true)
 	await anim.animation_finished
 	queue_free()
 
@@ -24,3 +25,7 @@ func _physics_process(delta: float) -> void:
 		anim.play("shot")
 	move_and_slide()
 	
+func pop() :
+	anim.play("pop")
+	await anim.animation_finished
+	queue_free()

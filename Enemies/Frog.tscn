@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cqp5metupxjh1"]
+[gd_scene load_steps=22 format=3 uid="uid://cqp5metupxjh1"]
 
 [ext_resource type="Script" uid="uid://b8jorcspliye2" path="res://Enemies/frog.gd" id="1_bl3hx"]
 [ext_resource type="Texture2D" uid="uid://cra27odxlrje5" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Enemies and NPC/frog/Spritesheets/frog-idle.png" id="1_bxkaj"]
@@ -127,10 +127,14 @@ size = Vector2(24, 19)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77d3p"]
 size = Vector2(28, 19.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wltku"]
+size = Vector2(42, 17.5)
+
 [node name="Frog" type="CharacterBody2D"]
 script = ExtResource("1_bl3hx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_tdkji")
 
@@ -142,22 +146,32 @@ animation = &"Idle"
 [node name="PlayerDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+visible = false
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_0hems")
 
 [node name="characterDeath" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="characterDeath"]
+visible = false
 position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_bl3hx")
 
 [node name="damage" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
+visible = false
 position = Vector2(0, -8.625)
 shape = SubResource("RectangleShape2D_77d3p")
+
+[node name="acronDanage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="acronDanage"]
+position = Vector2(0, -10.25)
+shape = SubResource("RectangleShape2D_wltku")
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
 [connection signal="body_entered" from="characterDeath" to="." method="_on_character_death_body_entered"]
 [connection signal="body_entered" from="damage" to="." method="_on_damage_body_entered"]
+[connection signal="body_entered" from="acronDanage" to="." method="_on_acron_danage_body_entered"]
