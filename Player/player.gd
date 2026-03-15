@@ -2,7 +2,7 @@ extends CharacterBody2D
 var health = 100
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-var acronsNum = 0
+var acronsNum = 1
 @export var acron_scene :PackedScene
 
 @onready var animation = get_node("AnimationPlayer")
@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		animation.play("Jump")
 		
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if Input.is_action_just_pressed("ui_up") and is_on_floor():
+	if Input.is_action_just_pressed("ui_up"):
 		if acronsNum> 0:
 			animation.play("Shoot")
 			acronsNum-=1

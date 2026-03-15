@@ -21,3 +21,5 @@ func _on_collectable_body_entered(body: Node2D) -> void:
 		anim.play("Death")
 		await anim.animation_finished
 		queue_free()
+	if body.name == "shootableAcron" :
+		$CollisionShape2D.set_deferred("disabled" , true)
