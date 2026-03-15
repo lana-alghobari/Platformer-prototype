@@ -2,7 +2,7 @@ extends CharacterBody2D
 var health = 100
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-var acronsNum = 1
+var acronsNum = 0
 @export var acron_scene :PackedScene
 
 @onready var animation = get_node("AnimationPlayer")
@@ -33,7 +33,11 @@ func _physics_process(delta: float) -> void:
 			acron.dir = dir
 			acron.global_position = global_position +Vector2(20*dir,0)
 			await animation.animation_finished
-		
+	
+	if Input.is_action_just_pressed("ui_down"):
+		if acronsNum>0:
+			acronsNum-=1
+			health+=10 
 	if direction:
 		if direction ==1 :
 			get_node("AnimatedSprite2D").flip_h = false
