@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=3 uid="uid://do24utksdr2kd"]
+
+[ext_resource type="Texture2D" uid="uid://b2rau6081rqwq" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/idle/_0000_Layer-1.png" id="1_6r7s1"]
+[ext_resource type="Script" uid="uid://im4d8m8f61k4" path="res://Player/bunny.gd" id="1_arar6"]
+[ext_resource type="Texture2D" uid="uid://drtpl8r2y73td" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/idle/_0001_Layer-2.png" id="2_arar6"]
+[ext_resource type="Texture2D" uid="uid://dml7o1cddbgar" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/idle/_0002_Layer-3.png" id="3_yr3hx"]
+[ext_resource type="Texture2D" uid="uid://de70oxc6ts7tv" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/idle/_0003_Layer-4.png" id="4_u17c1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6m75y"]
+radius = 8.0
+height = 28.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ac77u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6r7s1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_arar6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yr3hx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u17c1")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_yr3hx"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.17081416, 0.37213084, 0.5368445),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_u17c1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6m75y"]
+_data = {
+&"Idle": SubResource("Animation_yr3hx"),
+&"RESET": SubResource("Animation_u17c1")
+}
+
+[node name="Bunny" type="CharacterBody2D"]
+script = ExtResource("1_arar6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6m75y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -5)
+scale = Vector2(0.8958334, 0.8809523)
+sprite_frames = SubResource("SpriteFrames_ac77u")
+animation = &"Idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6m75y")
+}
