@@ -1,14 +1,37 @@
-[gd_scene load_steps=11 format=3 uid="uid://do24utksdr2kd"]
+[gd_scene load_steps=24 format=3 uid="uid://do24utksdr2kd"]
 
 [ext_resource type="Texture2D" uid="uid://b2rau6081rqwq" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/idle/_0000_Layer-1.png" id="1_6r7s1"]
 [ext_resource type="Script" uid="uid://im4d8m8f61k4" path="res://Player/bunny.gd" id="1_arar6"]
 [ext_resource type="Texture2D" uid="uid://drtpl8r2y73td" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/idle/_0001_Layer-2.png" id="2_arar6"]
 [ext_resource type="Texture2D" uid="uid://dml7o1cddbgar" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/idle/_0002_Layer-3.png" id="3_yr3hx"]
 [ext_resource type="Texture2D" uid="uid://de70oxc6ts7tv" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/idle/_0003_Layer-4.png" id="4_u17c1"]
+[ext_resource type="Texture2D" uid="uid://4ymd5owwpx3b" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/run/_0000_Layer-1.png" id="6_1bsw5"]
+[ext_resource type="Texture2D" uid="uid://dd56mdpv6xm1b" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/sunny-bunny-jump.png" id="6_5owft"]
+[ext_resource type="Texture2D" uid="uid://cem2l6o6s3bv" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/run/_0001_Layer-2.png" id="7_5owft"]
+[ext_resource type="Texture2D" uid="uid://dw8rpbtw5foss" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/run/_0002_Layer-3.png" id="8_0emvq"]
+[ext_resource type="Texture2D" uid="uid://dy3ok6xpyku68" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/run/_0003_Layer-4.png" id="9_qlgvm"]
+[ext_resource type="Texture2D" uid="uid://bjc6l6ih3ng2g" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/run/_0004_Layer-5.png" id="10_0el2t"]
+[ext_resource type="Texture2D" uid="uid://cxa73bu0mpuaa" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/run/_0005_Layer-6.png" id="11_fef8b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6m75y"]
 radius = 8.0
 height = 28.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0emvq"]
+atlas = ExtResource("6_5owft")
+region = Rect2(0, 0, 41, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlgvm"]
+atlas = ExtResource("6_5owft")
+region = Rect2(96, 0, 41, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0el2t"]
+atlas = ExtResource("6_5owft")
+region = Rect2(192, 0, 41, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fef8b"]
+atlas = ExtResource("6_5owft")
+region = Rect2(288, 0, 41, 57)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ac77u"]
 animations = [{
@@ -27,6 +50,46 @@ animations = [{
 }],
 "loop": false,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0emvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlgvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0el2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fef8b")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_1bsw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5owft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0emvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qlgvm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0el2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_fef8b")
+}],
+"loop": true,
+"name": &"Run",
 "speed": 5.0
 }]
 
@@ -84,10 +147,68 @@ tracks/1/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_mu60m"]
+resource_name = "Run"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_eekuw"]
+resource_name = "Jump"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m75y"]
 _data = {
 &"Idle": SubResource("Animation_yr3hx"),
-&"RESET": SubResource("Animation_u17c1")
+&"Jump": SubResource("Animation_eekuw"),
+&"RESET": SubResource("Animation_u17c1"),
+&"Run": SubResource("Animation_mu60m")
 }
 
 [node name="Bunny" type="CharacterBody2D"]
@@ -97,7 +218,7 @@ script = ExtResource("1_arar6")
 shape = SubResource("CapsuleShape2D_6m75y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -5)
+position = Vector2(4, -7)
 scale = Vector2(0.8958334, 0.8809523)
 sprite_frames = SubResource("SpriteFrames_ac77u")
 animation = &"Idle"
@@ -106,3 +227,6 @@ animation = &"Idle"
 libraries = {
 &"": SubResource("AnimationLibrary_6m75y")
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.5, 3.5)

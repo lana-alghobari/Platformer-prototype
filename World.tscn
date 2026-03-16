@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=4 uid="uid://clwa5r46nrhrk"]
+[gd_scene load_steps=12 format=4 uid="uid://clwa5r46nrhrk"]
 
-[ext_resource type="PackedScene" uid="uid://bwum75wb70s6b" path="res://Player/player.tscn" id="1_c6gwx"]
 [ext_resource type="Texture2D" uid="uid://cuy5g0m5shun8" path="res://sunny-land-phaser-project/sunny-land/assets/environment/tileset.png" id="2_bcbcq"]
 [ext_resource type="Script" uid="uid://xq1xvsudd0v1" path="res://BackGround/back_ground.gd" id="2_eu7l1"]
 [ext_resource type="Texture2D" uid="uid://8b8vl5b64xva" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Environments/Forest of Illusion/Forest of Illusion Expansion Pack/Layers/back.png" id="3_p1v5b"]
@@ -151,9 +150,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_bah7m")
 
 [node name="World" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("1_c6gwx")]
-position = Vector2(539, 332)
 
 [node name="BackGround" type="ParallaxBackground" parent="."]
 script = ExtResource("2_eu7l1")
