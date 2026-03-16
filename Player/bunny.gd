@@ -1,7 +1,7 @@
 extends CharacterBody2D
 var health = 100
 var speed = 450
-var JUMP_VELOCITY = -700
+var JUMP_VELOCITY = -550
 @onready var anim = get_node("AnimationPlayer")
 
 func _physics_process(delta: float) -> void:
