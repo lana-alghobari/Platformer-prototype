@@ -13,4 +13,5 @@ func _process(delta: float) -> void:
 	if get_node("../../Player")!=null and get_node("../../Player").acronsNum==0 and Input.is_action_pressed("ui_up") :
 		text ="You have no acrons bitch"
 	#if get_node("../../Bunny")!=null
-		
+	if get_node("../../Bunny")!=null:
+		text= "Acorns: " + str(get_node("../../Bunny").acrons_num)

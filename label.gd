@@ -12,3 +12,5 @@ func _process(delta: float) -> void:
 		text = "Hp: " + str(get_node("../../Player").health)
 	if(get_node("../../Bunny")!=null):
 		text = "Hp: " + str(get_node("../../Bunny").health) 
+	else :
+		text = "error help"
