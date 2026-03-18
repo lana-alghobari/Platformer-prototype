@@ -3,6 +3,7 @@ var isCollected = false
 @onready var player = get_node("../Player")
 @onready var anim = get_node("AnimatedSprite2D")
 @onready var bunny = get_node("../Bunny")
+@onready var foxy = get_node("../Foxy")
 
 func _physics_process(delta: float) -> void:
 	if isCollected == true:
@@ -32,6 +33,16 @@ func _on_collectable_body_entered(body: Node2D) -> void:
 		bunny.acrons_num+=1
 		if (bunny.health<100):
 			bunny.health+=10
+		anim.play("Death")
+		await anim.animation_finished
+		queue_free()
+	if body.name == "Foxy":
+		$CollisionShape2D.set_deferred("disabled" , true)
+		$collectable/CollisionShape2D.set_deferred("disabled", true)
+		isCollected = true
+		foxy.acrons_num+=1
+		if (foxy.health<100):
+			foxy.health+=10
 		anim.play("Death")
 		await anim.animation_finished
 		queue_free()
