@@ -7,10 +7,10 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if (get_node("../../Player")!=null):
-		text = "Hp: " + str(get_node("../../Player").health)
-	if(get_node("../../Bunny")!=null):
-		text = "Hp: " + str(get_node("../../Bunny").health) 
-	else :
-		text = "error help"
+#func _process(delta: float) -> void:
+	#if (get_node("../../Player")!=null):
+		#text = "Hp: " + str(get_node("../../Player").health)
+	#if(get_node("../../Bunny")!=null):
+		#text = "Hp: " + str(get_node("../../Bunny").health) 
+	#else :
+		#text = "error help"

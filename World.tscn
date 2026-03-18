@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dbhrjwfs0rtln" path="res://label.gd" id="7_wygdx"]
 [ext_resource type="PackedScene" uid="uid://bbpii4yj5hb" path="res://Acron.tscn" id="8_bah7m"]
 [ext_resource type="Script" uid="uid://dnfo6pxesvojr" path="res://label_2.gd" id="8_fv4w7"]
-[ext_resource type="PackedScene" uid="uid://do24utksdr2kd" path="res://Player/bunny.tscn" id="10_fvag4"]
+[ext_resource type="PackedScene" uid="uid://cod6a5efgjdpl" path="res://Player/foxy.tscn" id="9_fv4w7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bah7m"]
 texture = ExtResource("2_bcbcq")
@@ -225,5 +225,5 @@ position = Vector2(801, 272)
 [node name="Acron2" parent="." instance=ExtResource("8_bah7m")]
 position = Vector2(638, 381)
 
-[node name="Bunny" parent="." instance=ExtResource("10_fvag4")]
-position = Vector2(496, 329)
+[node name="Foxy" parent="." instance=ExtResource("9_fv4w7")]
+position = Vector2(514, 386)
