@@ -2,11 +2,15 @@ extends CharacterBody2D
 var health = 100
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var isSpawn = false
 var acronsNum = 0
 @export var acron_scene :PackedScene
+@export var bunny_scene : PackedScene
 
 @onready var animation = get_node("AnimationPlayer")
 func _physics_process(delta: float) -> void:
+	if isSpawn == true :
+		return
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
@@ -16,10 +20,11 @@ func _physics_process(delta: float) -> void:
 		await animation.animation_finished
 		tree.change_scene_to_file("res://game_over.tscn")
 		
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_cancel") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		animation.play("Jump")
-		
+	if Input.is_action_just_released("ui_accept"): 
+		changeBunny()
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_just_pressed("ui_up"):
 		if acronsNum> 0:
@@ -59,3 +64,16 @@ func take_damage():
 		health -= 10
 		animation.play("Hurt")
 		await animation.animation_finished
+		
+func changeBunny(): 
+	isSpawn = true
+	var pos = global_position
+	animation.play("Death")
+	await animation.animation_finished 
+	var bunny = bunny_scene.instantiate()
+	get_parent().add_child(bunny)
+	bunny.global_position = pos
+	bunny.health= health
+	bunny.acrons_num = acronsNum
+	queue_free()
+	
