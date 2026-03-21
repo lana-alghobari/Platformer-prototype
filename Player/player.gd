@@ -2,14 +2,15 @@ extends CharacterBody2D
 var health = 100
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-var isSpawn = false
-var acronsNum = 0
+var acrons_num = 0
+var isToggled = false
 @export var acron_scene :PackedScene
 @export var bunny_scene : PackedScene
 
 @onready var animation = get_node("AnimationPlayer")
 func _physics_process(delta: float) -> void:
-	if isSpawn == true :
+	if isToggled :
+		move_and_slide()
 		return
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -23,13 +24,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		animation.play("Jump")
-	if Input.is_action_just_released("ui_accept"): 
+	if Input.is_action_just_pressed("ui_accept") and !isToggled: 
 		changeBunny()
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_just_pressed("ui_up"):
-		if acronsNum> 0:
+		if acrons_num> 0:
 			animation.play("Shoot")
-			acronsNum-=1
+			acrons_num-=1
 			var acron = acron_scene.instantiate()
 			get_parent().add_child(acron)
 			var dir =1 
@@ -40,8 +41,8 @@ func _physics_process(delta: float) -> void:
 			await animation.animation_finished
 	
 	if Input.is_action_just_pressed("ui_down"):
-		if acronsNum>0:
-			acronsNum-=1
+		if acrons_num>0:
+			acrons_num-=1
 			health+=10 
 	if direction:
 		if direction ==1 :
@@ -66,14 +67,16 @@ func take_damage():
 		await animation.animation_finished
 		
 func changeBunny(): 
-	isSpawn = true
+	if isToggled or not bunny_scene :
+		return 
 	var pos = global_position
 	animation.play("Death")
-	await animation.animation_finished 
+	await animation.animation_finished
+	isToggled = true  
 	var bunny = bunny_scene.instantiate()
 	get_parent().add_child(bunny)
 	bunny.global_position = pos
 	bunny.health= health
-	bunny.acrons_num = acronsNum
+	bunny.acrons_num = acrons_num
 	queue_free()
 	
