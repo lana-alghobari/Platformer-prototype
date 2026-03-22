@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bwum75wb70s6b"]
+[gd_scene load_steps=43 format=3 uid="uid://bwum75wb70s6b"]
 
 [ext_resource type="Script" uid="uid://c36rhvlgywii4" path="res://Player/player.gd" id="1_hshwv"]
 [ext_resource type="PackedScene" uid="uid://v7ifpem3xrlt" path="res://Acron/shootable_acron.tscn" id="2_8mwp6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://caelg8vi6wvi6" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Squirrel/hurt/Frames/player-hurt-1.png" id="3_8mwp6"]
 [ext_resource type="Texture2D" uid="uid://c0agpjwk8onnr" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Props Items and VFX/enemy-death 2/spritesheet.png" id="3_gpjlu"]
 [ext_resource type="PackedScene" uid="uid://do24utksdr2kd" path="res://Player/bunny.tscn" id="3_qemgg"]
+[ext_resource type="PackedScene" uid="uid://cod6a5efgjdpl" path="res://Player/foxy.tscn" id="4_8viyr"]
 [ext_resource type="Texture2D" uid="uid://brbstjg4o0oo1" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Squirrel/hurt/Frames/player-hurt-2.png" id="4_qemgg"]
 [ext_resource type="Texture2D" uid="uid://dp6ye2i5hcupx" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Squirrel/idle/Sprites/player-idle-1.png" id="5_8viyr"]
 [ext_resource type="Texture2D" uid="uid://cg77ousimyci8" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Squirrel/idle/Sprites/player-idle-2.png" id="6_sm0op"]
@@ -377,6 +378,7 @@ _data = {
 script = ExtResource("1_hshwv")
 acron_scene = ExtResource("2_8mwp6")
 bunny_scene = ExtResource("3_qemgg")
+foxy_scene = ExtResource("4_8viyr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 3)

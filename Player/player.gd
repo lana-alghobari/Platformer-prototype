@@ -3,13 +3,15 @@ var health = 100
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var acrons_num = 0
-var isToggled = false
+var isToggledBunny = false
+var isToggledFoxy = false
 @export var acron_scene :PackedScene
 @export var bunny_scene : PackedScene
+@export var foxy_scene :PackedScene
 
 @onready var animation = get_node("AnimationPlayer")
 func _physics_process(delta: float) -> void:
-	if isToggled :
+	if isToggledBunny or isToggledFoxy :
 		move_and_slide()
 		return
 	if not is_on_floor():
@@ -24,8 +26,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		animation.play("Jump")
-	if Input.is_action_just_pressed("ui_accept") and !isToggled: 
+	if Input.is_action_just_pressed("ui_accept") and !isToggledBunny: 
 		changeBunny()
+	if Input.is_action_just_pressed("ui_end") :
+		changeFoxy()
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_just_pressed("ui_up"):
 		if acrons_num> 0:
@@ -67,12 +71,12 @@ func take_damage():
 		await animation.animation_finished
 		
 func changeBunny(): 
-	if isToggled or not bunny_scene :
+	if isToggledBunny or not bunny_scene :
 		return 
 	var pos = global_position
 	animation.play("Death")
 	await animation.animation_finished
-	isToggled = true  
+	isToggledBunny = true  
 	var bunny = bunny_scene.instantiate()
 	get_parent().add_child(bunny)
 	bunny.global_position = pos
@@ -80,3 +84,16 @@ func changeBunny():
 	bunny.acrons_num = acrons_num
 	queue_free()
 	
+func changeFoxy():
+	if isToggledFoxy or not foxy_scene :
+		return 
+	var pos = global_position
+	animation.play("Death")
+	await animation.animation_finished
+	isToggledFoxy = true  
+	var foxy = foxy_scene.instantiate()
+	get_parent().add_child(foxy)
+	foxy.global_position = pos
+	foxy.health= health
+	foxy.acrons_num = acrons_num
+	queue_free()
