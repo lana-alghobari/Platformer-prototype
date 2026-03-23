@@ -1,9 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://cod6a5efgjdpl"]
+[gd_scene load_steps=27 format=3 uid="uid://cod6a5efgjdpl"]
 
 [ext_resource type="Texture2D" uid="uid://de5mojdrs2520" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Foxy/idle/player-idle-1.png" id="1_aqs5g"]
 [ext_resource type="Script" uid="uid://bufeadpnrna5r" path="res://Player/foxy.gd" id="1_wnkg1"]
+[ext_resource type="PackedScene" uid="uid://bwum75wb70s6b" path="res://Player/player.tscn" id="2_lnima"]
 [ext_resource type="Texture2D" uid="uid://gx68jgifnwm2" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Foxy/climb/player-climb-1.png" id="2_q4tp7"]
 [ext_resource type="Texture2D" uid="uid://bo0sy7fyp1vb3" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Foxy/idle/player-idle-2.png" id="2_wnkg1"]
+[ext_resource type="PackedScene" uid="uid://do24utksdr2kd" path="res://Player/bunny.tscn" id="3_djjha"]
 [ext_resource type="Texture2D" uid="uid://e72phn1sns8h" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Foxy/idle/player-idle-3.png" id="3_wtbob"]
 [ext_resource type="Texture2D" uid="uid://docluednc104h" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Foxy/climb/player-climb-2.png" id="3_yer81"]
 [ext_resource type="Texture2D" uid="uid://c750v6iedrck" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Foxy/climb/player-climb-3.png" id="4_lnima"]
@@ -238,6 +240,9 @@ _data = {
 
 [node name="Foxy" type="CharacterBody2D"]
 script = ExtResource("1_wnkg1")
+player_scene = ExtResource("2_lnima")
+bunny_scene = ExtResource("3_djjha")
+foxy_scene = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_udkyp")

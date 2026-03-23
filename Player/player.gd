@@ -8,7 +8,7 @@ var isToggledFoxy = false
 @export var acron_scene :PackedScene
 @export var bunny_scene : PackedScene
 @export var foxy_scene :PackedScene
-
+@export var player_scene : PackedScene 
 @onready var animation = get_node("AnimationPlayer")
 func _physics_process(delta: float) -> void:
 	if isToggledBunny or isToggledFoxy :
@@ -71,28 +71,24 @@ func take_damage():
 		await animation.animation_finished
 		
 func changeBunny(): 
-	var pos = global_position
-	animation.play("Death")
-	await animation.animation_finished
 	if isToggledBunny or not bunny_scene :
 		return 	
 	isToggledBunny = true  
 	var bunny = bunny_scene.instantiate()
 	get_parent().add_child(bunny)
+	var pos = global_position
 	bunny.global_position = pos
 	bunny.health= health
 	bunny.acrons_num = acrons_num
 	queue_free()
 	
 func changeFoxy():
-	var pos = global_position
-	animation.play("Death")
-	await animation.animation_finished
 	if isToggledFoxy or not foxy_scene :
 		return 
 	isToggledFoxy = true  
 	var foxy = foxy_scene.instantiate()
 	get_parent().add_child(foxy)
+	var pos = global_position
 	foxy.global_position = pos
 	foxy.health= health
 	foxy.acrons_num = acrons_num

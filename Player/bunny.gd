@@ -3,7 +3,11 @@ var health = 100
 var speed = 450
 var JUMP_VELOCITY = -500
 var acrons_num = 0
+var isTransformed = false
 @onready var anim = get_node("AnimationPlayer")
+@export var player_scene : PackedScene
+@export var foxy_scene : PackedScene
+@export var bunny_scene : PackedScene
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -11,6 +15,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		anim.play("Jump")
+	if Input.is_action_just_pressed("ui_end") and !isTransformed:
+		print(player_scene)
+		changeSqueeky()
+		move_and_slide()
+	if Input.is_action_just_pressed("ui_home") and !isTransformed:
+		changeFoxy()
+		move_and_slide()
 		
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
@@ -26,3 +37,27 @@ func _physics_process(delta: float) -> void:
 		if velocity.y == 0 :
 			anim.play("Idle")
 	move_and_slide()
+	
+func changeSqueeky():
+	if isTransformed :
+		return
+	isTransformed = true 
+	var player = player_scene.instantiate()
+	get_parent().add_child(player)
+	var pos = global_position 
+	player.global_position = pos
+	player.acrons_num = acrons_num
+	player.health = health
+	queue_free()
+	
+func changeFoxy() :
+	if isTransformed :
+		return
+	isTransformed = true 
+	var foxy = foxy_scene.instantiate()
+	get_parent().add_child(foxy)
+	var pos = global_position
+	foxy.global_position = pos
+	foxy.acrons_num = acrons_num
+	foxy.health= health
+	queue_free()	

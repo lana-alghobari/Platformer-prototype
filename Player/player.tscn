@@ -379,6 +379,7 @@ script = ExtResource("1_hshwv")
 acron_scene = ExtResource("2_8mwp6")
 bunny_scene = ExtResource("3_qemgg")
 foxy_scene = ExtResource("4_8viyr")
+player_scene = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 3)
