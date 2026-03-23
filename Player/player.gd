@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		await animation.animation_finished
 		tree.change_scene_to_file("res://game_over.tscn")
 		
-	if Input.is_action_just_pressed("ui_cancel") and is_on_floor():
+	if Input.is_action_just_pressed("ui_cancel") and is_on_floor() and !isToggledBunny and !isToggledFoxy:
 		velocity.y = JUMP_VELOCITY
 		animation.play("Jump")
 	if Input.is_action_just_pressed("ui_accept") and !isToggledBunny: 
@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_end") :
 		changeFoxy()
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_up") and !isToggledBunny and !isToggledFoxy:
 		if acrons_num> 0:
 			animation.play("Shoot")
 			acrons_num-=1
@@ -54,11 +54,11 @@ func _physics_process(delta: float) -> void:
 		elif direction == -1:
 			get_node("AnimatedSprite2D").flip_h = true
 		velocity.x = direction * SPEED
-		if velocity.y == 0 :
+		if velocity.y == 0 and !isToggledBunny and !isToggledFoxy:
 			animation.play("Run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if velocity.y == 0 :
+		if velocity.y == 0 and !isToggledBunny and !isToggledFoxy:
 			animation.play("Idle")
 	if velocity.y >0 :
 		animation.play("Jump")
@@ -71,11 +71,11 @@ func take_damage():
 		await animation.animation_finished
 		
 func changeBunny(): 
-	if isToggledBunny or not bunny_scene :
-		return 
 	var pos = global_position
 	animation.play("Death")
 	await animation.animation_finished
+	if isToggledBunny or not bunny_scene :
+		return 	
 	isToggledBunny = true  
 	var bunny = bunny_scene.instantiate()
 	get_parent().add_child(bunny)
@@ -85,11 +85,11 @@ func changeBunny():
 	queue_free()
 	
 func changeFoxy():
-	if isToggledFoxy or not foxy_scene :
-		return 
 	var pos = global_position
 	animation.play("Death")
 	await animation.animation_finished
+	if isToggledFoxy or not foxy_scene :
+		return 
 	isToggledFoxy = true  
 	var foxy = foxy_scene.instantiate()
 	get_parent().add_child(foxy)
