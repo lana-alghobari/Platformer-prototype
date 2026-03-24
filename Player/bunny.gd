@@ -5,9 +5,9 @@ var JUMP_VELOCITY = -500
 var acrons_num = 0
 var isTransformed = false
 @onready var anim = get_node("AnimationPlayer")
-@export var player_scene : PackedScene
-@export var foxy_scene : PackedScene
-@export var bunny_scene : PackedScene
+@onready var player_scene = preload("res://Player/player.tscn")
+@onready var foxy_scene = preload("res://Player/foxy.tscn")
+@onready var bunny_scene = preload("res://Player/bunny.tscn")
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -48,7 +48,13 @@ func changeSqueeky():
 	player.global_position = pos
 	player.acrons_num = acrons_num
 	player.health = health
-	queue_free()
+	if has_node("CameraFollowTarget"):
+		player.add_child(get_node("CameraFollowTarget"))
+	set_physics_process(false)
+	set_process(false)
+	collision_layer = 0  # Remove from collision
+	collision_mask = 0   # Stop detecting collisions
+	visible = false
 	
 func changeFoxy() :
 	if isTransformed :
@@ -60,4 +66,10 @@ func changeFoxy() :
 	foxy.global_position = pos
 	foxy.acrons_num = acrons_num
 	foxy.health= health
-	queue_free()	
+	if has_node("CameraFollowTarget"):
+		foxy.add_child(get_node("CameraFollowTarget"))
+	set_physics_process(false)
+	set_process(false)
+	collision_layer = 0  # Remove from collision
+	collision_mask = 0   # Stop detecting collisions
+	visible = false

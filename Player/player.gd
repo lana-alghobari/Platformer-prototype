@@ -6,9 +6,9 @@ var acrons_num = 0
 var isToggledBunny = false
 var isToggledFoxy = false
 @export var acron_scene :PackedScene
-@export var bunny_scene : PackedScene
-@export var foxy_scene :PackedScene
-@export var player_scene : PackedScene 
+@onready var player_scene = preload("res://Player/player.tscn")
+@onready var foxy_scene = preload("res://Player/foxy.tscn")
+@onready var bunny_scene = preload("res://Player/bunny.tscn")
 @onready var animation = get_node("AnimationPlayer")
 func _physics_process(delta: float) -> void:
 	if isToggledBunny or isToggledFoxy :
@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel") and is_on_floor() and !isToggledBunny and !isToggledFoxy:
 		velocity.y = JUMP_VELOCITY
 		animation.play("Jump")
-	if Input.is_action_just_pressed("ui_accept") and !isToggledBunny: 
+	if Input.is_action_just_pressed("ui_accept"): 
 		changeBunny()
 	if Input.is_action_just_pressed("ui_end") :
 		changeFoxy()
@@ -80,7 +80,13 @@ func changeBunny():
 	bunny.global_position = pos
 	bunny.health= health
 	bunny.acrons_num = acrons_num
-	queue_free()
+	if has_node("CameraFollowTarget"):
+		bunny.add_child(get_node("CameraFollowTarget"))
+	set_physics_process(false)
+	set_process(false)
+	collision_layer = 0  # Remove from collision
+	collision_mask = 0   # Stop detecting collisions
+	visible = false
 	
 func changeFoxy():
 	if isToggledFoxy or not foxy_scene :
@@ -92,4 +98,10 @@ func changeFoxy():
 	foxy.global_position = pos
 	foxy.health= health
 	foxy.acrons_num = acrons_num
-	queue_free()
+	if has_node("CameraFollowTarget"):
+		foxy.add_child(get_node("CameraFollowTarget"))
+	set_physics_process(false)
+	set_process(false)
+	collision_layer = 0  # Remove from collision
+	collision_mask = 0   # Stop detecting collisions
+	visible = false
