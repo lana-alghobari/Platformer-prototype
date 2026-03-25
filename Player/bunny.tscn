@@ -3,8 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://b2rau6081rqwq" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/idle/_0000_Layer-1.png" id="1_6r7s1"]
 [ext_resource type="Script" uid="uid://im4d8m8f61k4" path="res://Player/bunny.gd" id="1_arar6"]
 [ext_resource type="Texture2D" uid="uid://drtpl8r2y73td" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/idle/_0001_Layer-2.png" id="2_arar6"]
-[ext_resource type="PackedScene" uid="uid://bwum75wb70s6b" path="res://Player/player.tscn" id="2_qlgvm"]
-[ext_resource type="PackedScene" uid="uid://cod6a5efgjdpl" path="res://Player/foxy.tscn" id="3_0el2t"]
 [ext_resource type="Texture2D" uid="uid://dml7o1cddbgar" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/idle/_0002_Layer-3.png" id="3_yr3hx"]
 [ext_resource type="Texture2D" uid="uid://de70oxc6ts7tv" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/idle/_0003_Layer-4.png" id="4_u17c1"]
 [ext_resource type="Texture2D" uid="uid://4ymd5owwpx3b" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Bunny/Sprites/run/_0000_Layer-1.png" id="6_1bsw5"]

@@ -6,9 +6,9 @@ var acrons_num = 0
 var isToggledBunny = false
 var isToggledFoxy = false
 @export var acron_scene :PackedScene
-@onready var player_scene = preload("res://Player/player.tscn")
-@onready var foxy_scene = preload("res://Player/foxy.tscn")
-@onready var bunny_scene = preload("res://Player/bunny.tscn")
+#@onready var player_scene = preload("res://Player/player.tscn")
+#@onready var foxy_scene = preload("res://Player/foxy.tscn")
+#@onready var bunny_scene = preload("res://Player/bunny.tscn")
 @onready var animation = get_node("AnimationPlayer")
 func _physics_process(delta: float) -> void:
 	if isToggledBunny or isToggledFoxy :
@@ -70,38 +70,38 @@ func take_damage():
 		animation.play("Hurt")
 		await animation.animation_finished
 		
-func changeBunny(): 
-	if isToggledBunny or not bunny_scene :
-		return 	
-	isToggledBunny = true  
-	var bunny = bunny_scene.instantiate()
-	get_parent().add_child(bunny)
-	var pos = global_position
-	bunny.global_position = pos
-	bunny.health= health
-	bunny.acrons_num = acrons_num
-	if has_node("CameraFollowTarget"):
-		bunny.add_child(get_node("CameraFollowTarget"))
-	set_physics_process(false)
-	set_process(false)
-	collision_layer = 0  # Remove from collision
-	collision_mask = 0   # Stop detecting collisions
-	visible = false
+#func changeBunny(): 
+	#if isToggledBunny or not bunny_scene :
+		#return 	
+	#isToggledBunny = true  
+	#var bunny = bunny_scene.instantiate()
+	#get_parent().add_child(bunny)
+	#var pos = global_position
+	#bunny.global_position = pos
+	#bunny.health= health
+	#bunny.acrons_num = acrons_num
+	#if has_node("CameraFollowTarget"):
+		#bunny.add_child(get_node("CameraFollowTarget"))
+	#set_physics_process(false)
+	#set_process(false)
+	#collision_layer = 0  # Remove from collision
+	#collision_mask = 0   # Stop detecting collisions
+	#visible = false
 	
-func changeFoxy():
-	if isToggledFoxy or not foxy_scene :
-		return 
-	isToggledFoxy = true  
-	var foxy = foxy_scene.instantiate()
-	get_parent().add_child(foxy)
-	var pos = global_position
-	foxy.global_position = pos
-	foxy.health= health
-	foxy.acrons_num = acrons_num
-	if has_node("CameraFollowTarget"):
-		foxy.add_child(get_node("CameraFollowTarget"))
-	set_physics_process(false)
-	set_process(false)
-	collision_layer = 0  # Remove from collision
-	collision_mask = 0   # Stop detecting collisions
-	visible = false
+#func changeFoxy():
+	#if isToggledFoxy or not foxy_scene :
+		#return 
+	#isToggledFoxy = true  
+	#var foxy = foxy_scene.instantiate()
+	#get_parent().add_child(foxy)
+	#var pos = global_position
+	#foxy.global_position = pos
+	#foxy.health= health
+	#foxy.acrons_num = acrons_num
+	#if has_node("CameraFollowTarget"):
+		#foxy.add_child(get_node("CameraFollowTarget"))
+	#set_physics_process(false)
+	#set_process(false)
+	#collision_layer = 0  # Remove from collision
+	#collision_mask = 0   # Stop detecting collisions
+	#visible = false

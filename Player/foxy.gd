@@ -6,9 +6,9 @@ var jump = -350
 var acrons_num =0
 var isTransformed = false
 @onready var anim = get_node("AnimationPlayer") 
-@onready var player_scene = preload("res://Player/player.tscn")
-@onready var foxy_scene = preload("res://Player/foxy.tscn")
-@onready var bunny_scene = preload("res://Player/bunny.tscn")
+#@onready var player_scene = preload("res://Player/player.tscn")
+#@onready var foxy_scene = preload("res://Player/foxy.tscn")
+#@onready var bunny_scene = preload("res://Player/bunny.tscn")
 
 func _physics_process(delta: float) -> void:
 	if isClimbing:
@@ -52,38 +52,38 @@ func climb() :
 	else :
 		anim.stop()
 
-func changeSqueeky():
-	if isTransformed :
-		return
-	isTransformed = true 
-	var player = player_scene.instantiate()
-	get_parent().add_child(player)
-	var pos = global_position 
-	player.global_position = pos
-	player.acrons_num = acrons_num
-	player.health = health
-	if has_node("CameraFollowTarget"):
-		player.add_child(get_node("CameraFollowTarget"))
-	set_physics_process(false)
-	set_process(false)
-	collision_layer = 0  # Remove from collision
-	collision_mask = 0   # Stop detecting collisions
-	visible = false
+#func changeSqueeky():
+	#if isTransformed :
+		#return
+	#isTransformed = true 
+	#var player = player_scene.instantiate()
+	#get_parent().add_child(player)
+	#var pos = global_position 
+	#player.global_position = pos
+	#player.acrons_num = acrons_num
+	#player.health = health
+	#if has_node("CameraFollowTarget"):
+		#player.add_child(get_node("CameraFollowTarget"))
+	#set_physics_process(false)
+	#set_process(false)
+	#collision_layer = 0  # Remove from collision
+	#collision_mask = 0   # Stop detecting collisions
+	#visible = false
 
-func changeBunny(): 
-	if isTransformed:
-		return 	
-	isTransformed = true  
-	var bunny = bunny_scene.instantiate()
-	get_parent().add_child(bunny)
-	var pos = global_position
-	bunny.global_position = pos
-	bunny.health= health
-	if has_node("CameraFollowTarget"):
-		bunny.add_child(get_node("CameraFollowTarget"))
-	set_physics_process(false)
-	set_process(false)
-	collision_layer = 0  # Remove from collision
-	collision_mask = 0   # Stop detecting collisions
-	visible = false
+#func changeBunny(): 
+	#if isTransformed:
+		#return 	
+	#isTransformed = true  
+	#var bunny = bunny_scene.instantiate()
+	#get_parent().add_child(bunny)
+	#var pos = global_position
+	#bunny.global_position = pos
+	#bunny.health= health
+	#if has_node("CameraFollowTarget"):
+		#bunny.add_child(get_node("CameraFollowTarget"))
+	#set_physics_process(false)
+	#set_process(false)
+	#collision_layer = 0  # Remove from collision
+	#collision_mask = 0   # Stop detecting collisions
+	#visible = false
 	
